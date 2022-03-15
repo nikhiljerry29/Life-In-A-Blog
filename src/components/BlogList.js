@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function BlogList({ blogs, title }) {
    if (blogs.length === 0 || blogs === null) {
@@ -17,8 +18,13 @@ function BlogList({ blogs, title }) {
 
          {blogs.map((blog) => (
             <div className='blog__display' key={blog.id}>
-               <h2 className='text-lg font-bold capitalize'>{blog.title}</h2>
-               <p className='text-sm text-gray-600'>Written by {blog.author}</p>
+               <Link to={`/blogs/${blog.id}`}>
+                  <h2 className='text-lg font-bold capitalize'>{blog.title}</h2>
+                  <p className='text-sm text-gray-600'>
+                     Written by{" "}
+                     <span className='capitalize'>{blog.author}</span>
+                  </p>
+               </Link>
                <button className='delete__btn' onClick={() => {}}>
                   <svg
                      xmlns='http://www.w3.org/2000/svg'

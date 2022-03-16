@@ -10,8 +10,8 @@ function Home() {
    const { data, isLoading, error } = useFetch("http://localhost:8000/blogs");
 
    return (
-      <main className='grid md:grid-cols-3 gap-5'>
-         <div className='col-span-2'>
+      <main>
+         <div className='max-w-2xl mx-auto'>
             <h2 className='text-2xl font-bold'>{title}</h2>
 
             {error && <Error text={error} />}
@@ -20,8 +20,6 @@ function Home() {
 
             {data && <BlogList blogs={data} title='All Blogs' />}
          </div>
-
-         <div className='col-span-1'></div>
       </main>
    );
 }

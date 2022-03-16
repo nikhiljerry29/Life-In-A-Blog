@@ -1,11 +1,15 @@
 import React from "react";
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import {
+   useHistory,
+   useParams,
+} from "react-router-dom/cjs/react-router-dom.min";
 import useFetch from "../hooks/useFetch";
 import Loader from "../utils/Loader";
 import Error from "../utils/Error";
 
 function BlogDetail() {
    const { id } = useParams();
+   const history = useHistory();
    const {
       data: blog,
       isLoading,
@@ -14,6 +18,28 @@ function BlogDetail() {
 
    return (
       <div className='max-w-5xl mx-auto'>
+         <div className='flex justify-end'>
+            <button
+               onClick={() => {
+                  history.go(-1);
+               }}
+            >
+               <svg
+                  xmlns='http://www.w3.org/2000/svg'
+                  className='w-7 text-gray-600'
+                  fill='none'
+                  viewBox='0 0 24 24'
+                  stroke='currentColor'
+                  strokeWidth={2}
+               >
+                  <path
+                     strokeLinecap='round'
+                     strokeLinejoin='round'
+                     d='M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z'
+                  />
+               </svg>
+            </button>
+         </div>
          {isLoading && <Loader />}
 
          {error && <Error text={error} />}
@@ -30,7 +56,9 @@ function BlogDetail() {
                      className='w-full md:w-96 md:float-left md:mr-4 md:mb-4 rounded shadow-md'
                   />
                )}
-               <p className='text-md text-justify mt-2 md:mt-auto'>{blog.body}</p>
+               <p className='text-md text-justify mt-2 md:mt-auto'>
+                  {blog.body}
+               </p>
                <h6 className='text-gray-700 text-right capitalize italic mt-4'>
                   <span>
                      <svg

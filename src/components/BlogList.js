@@ -6,12 +6,14 @@ function BlogList({ blogs, title }) {
    const history = useHistory();
 
    const handleCLick = (id) => {
-      fetch(`/blogs/${id}`, {
-         method: "DELETE",
-      }).then(() => {
-         console.log(`Blog : ${id} Deleted`);
-         history.go("/");
-      });
+      if (window.confirm("Are you sure want to delete this blog?")) {
+         fetch(`/blogs/${id}`, {
+            method: "DELETE",
+         }).then(() => {
+            console.log(`Blog : ${id} Deleted`);
+            history.go("/");
+         });
+      }
    };
 
    if (blogs.length === 0 || blogs === null) {

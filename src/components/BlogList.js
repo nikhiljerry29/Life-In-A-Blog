@@ -1,7 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function BlogList({ blogs, title }) {
+   const history = useHistory();
+
+   const handleCLick = (id) => {
+      fetch(`http://localhost:8000/blogs/${id}`, {
+         method: "DELETE",
+      }).then(() => {
+         console.log(`Blog : ${id} Deleted`);
+         history.go("/");
+      });
+   };
+
    if (blogs.length === 0 || blogs === null) {
       return (
          <div className='my-4 text-center'>
@@ -25,7 +37,12 @@ function BlogList({ blogs, title }) {
                      <span className='capitalize'>{blog.author}</span>
                   </p>
                </Link>
-               <button className='delete__btn' onClick={() => {}}>
+               <button
+                  className='delete__btn'
+                  onClick={() => {
+                     handleCLick(blog.id);
+                  }}
+               >
                   <svg
                      xmlns='http://www.w3.org/2000/svg'
                      className='h-6 w-6'

@@ -23,12 +23,14 @@ function BlogDetail() {
                <h1 className='text-3xl font-bold capitalize mb-5'>
                   {blog.title}
                </h1>
-               <img
-                  src={blog.img}
-                  alt={blog.title}
-                  className='w-full md:w-96 md:float-left mr-4 mb-4 rounded shadow-md'
-               />
-               <p className='text-md text-justify'>{blog.body}</p>
+               {blog.image && (
+                  <img
+                     src={blog.image}
+                     alt={blog.title}
+                     className='w-full md:w-96 md:float-left md:mr-4 md:mb-4 rounded shadow-md'
+                  />
+               )}
+               <p className='text-md text-justify mt-2 md:mt-auto'>{blog.body}</p>
                <h6 className='text-gray-700 text-right capitalize italic mt-4'>
                   <span>
                      <svg

@@ -6,7 +6,7 @@ function BlogList({ blogs, title }) {
    const history = useHistory();
 
    const handleCLick = (id) => {
-      if (window.confirm("Are you sure want to delete this blog?")) {
+      if (window.confirm("Are you sure want to delete this blog?") && id > 5) {
          fetch(`/blogs/${id}`, {
             method: "DELETE",
          }).then(() => {
@@ -44,6 +44,7 @@ function BlogList({ blogs, title }) {
                   onClick={() => {
                      handleCLick(blog.id);
                   }}
+                  disabled={blog.id <= 5}
                >
                   <svg
                      xmlns='http://www.w3.org/2000/svg'

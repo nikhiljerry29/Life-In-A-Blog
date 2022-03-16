@@ -7,7 +7,7 @@ import Error from "../utils/Error";
 function Home() {
    const title = "Welcome to the Life in a Blog.";
 
-   const { data, isLoading, error } = useFetch("http://localhost:8000/blogs");
+   const { data, isLoading, error } = useFetch("/blogs");
 
    return (
       <main>

@@ -6,7 +6,7 @@ function BlogList({ blogs, title }) {
    const history = useHistory();
 
    const handleCLick = (id) => {
-      fetch(`http://localhost:8000/blogs/${id}`, {
+      fetch(`/blogs/${id}`, {
          method: "DELETE",
       }).then(() => {
          console.log(`Blog : ${id} Deleted`);

@@ -20,7 +20,7 @@ function CreateBlog() {
 
       setIsSubmitting(true);
 
-      fetch("http://localhost:8000/blogs", {
+      fetch("/blogs", {
          method: "POST",
          headers: { "Content-Type": "application/json" },
          body: JSON.stringify(blog),

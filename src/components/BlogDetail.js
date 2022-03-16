@@ -10,11 +10,7 @@ import Error from "../utils/Error";
 function BlogDetail() {
    const { id } = useParams();
    const history = useHistory();
-   const {
-      data: blog,
-      isLoading,
-      error,
-   } = useFetch(`http://localhost:8000/blogs/${id}`);
+   const { data: blog, isLoading, error } = useFetch(`/blogs/${id}`);
 
    return (
       <div className='max-w-5xl mx-auto'>
